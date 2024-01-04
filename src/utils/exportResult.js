@@ -1,6 +1,7 @@
 module.exports = { exportResult };
 
 /**
+ * Function to export the result of a redeemInfo check, including status, reasons, and advantages.
  *
  * @param reason
  * @param promoCode
@@ -12,18 +13,22 @@ function exportResult(reason, promoCode) {
     promocode_name: promoCode.name,
   };
 
-  // If accepted
+  // If redeemInfo is accepted
   if (reason.isOK) {
     result.status = "accepted";
     result.advantage = promoCode.advantage;
   }
-  // If denied
+  // If redeemInfo is denied
   else {
+    // Create an object to store the specific reason for denial
     const objDeniedReason = {};
     objDeniedReason[reason.nameError] = reason.messageError;
+
+    // Update the result object with denial status and reasons
     result.status = "denied";
     result.reasons = objDeniedReason;
   }
 
+  // Return the final result object
   return result;
 }
