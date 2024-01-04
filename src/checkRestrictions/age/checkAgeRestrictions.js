@@ -1,10 +1,18 @@
 const { createReasonError } = require("../../utils/createReasonError");
 module.exports = { checkAgeRestrictions };
 
+/**
+ *
+ * @param redeemAge
+ * @param restrictionAge
+ * @returns {{isOK: boolean}|{nameError, messageError, isOR: boolean}}
+ */
 function checkAgeRestrictions(redeemAge, restrictionAge) {
   // Initialise output variable
   let reason = { isOK: true };
 
+  // If the PromoCode contains age restrictions and
+  // the user does not meet them, return a rejection reason
   if (restrictionAge.gt) {
     if (redeemAge < restrictionAge.gt) {
       return createReasonError("age", "isNotGT");
