@@ -3,6 +3,9 @@ const {
 } = require("./checkRestrictions/name/checkNameRestrictions");
 const { exportResult } = require("./utils/exportResult");
 const { checkRestrictions } = require("./checkRestrictions/checkRestrictions");
+const {
+  fetchWeatherData,
+} = require("./checkRestrictions/weather/fetchWeatherData");
 module.exports = { askReduction };
 
 /**
@@ -12,12 +15,22 @@ module.exports = { askReduction };
  * @returns {Promise<{promocode_name: *}>}
  */
 async function askReduction(redeemInfo, promoCode) {
+  let weatherData;
+  if (redeemInfo.arguments.hasOwnProperty("weather")) {
+    const redeemTown = redeemInfo.arguments.weather.town;
+    weatherData = await fetchWeatherData(redeemTown);
+  }
+
   // Bool: Do redeemInfo and promoCode have the same info?
   let reason = checkNameRestrictions(redeemInfo, promoCode);
 
   // If true, check restrictions validity
   if (reason.isOK) {
-    reason = checkRestrictions(redeemInfo.arguments, promoCode.restrictions);
+    reason = checkRestrictions(
+      redeemInfo.arguments,
+      promoCode.restrictions,
+      weatherData,
+    );
   }
 
   // Output accepted with advantage or denied with reason

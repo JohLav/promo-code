@@ -1,7 +1,7 @@
 const { askReduction } = require("../src/askReduction.js");
 
 describe("Date-related promo code validation", () => {
-  // 'accepted' Promo Codes
+  // 'accepted' PromoCodes
   it("should return acceptance of a simple promo code with valid date range", async () => {
     const promoCode = {
       name: "SimpleCodeDateRange",
@@ -108,7 +108,7 @@ describe("Date-related promo code validation", () => {
     });
   });
 
-  // //   //    'denied' Promo Codes
+  // 'denied' PromoCodes
   it("should return rejection of a simple promo code with invalid 'after' date", async () => {
     const promoCode = {
       name: "InvalidSimpleCodeAfterDate",

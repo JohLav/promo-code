@@ -11,7 +11,7 @@ module.exports = { checkRestrictions };
  * @param restrictions
  * @returns {{isOK: boolean}|*|{isOK: boolean}}
  */
-function checkRestrictions(redeemArguments, restrictions) {
+function checkRestrictions(redeemArguments, restrictions, weatherData) {
   // Initialise output variable
   let reason = { isOK: true };
 
@@ -42,8 +42,8 @@ function checkRestrictions(redeemArguments, restrictions) {
         break;
       case "@weather":
         reason = checkWeatherRestrictions(
-          redeemArguments.weather,
           restrictions[restrictionType],
+          weatherData,
         );
         if (reason.isOK === false) {
           return reason;
