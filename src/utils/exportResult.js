@@ -1,5 +1,11 @@
 module.exports = { exportResult };
 
+/**
+ *
+ * @param reason
+ * @param promoCode
+ * @returns {{promocode_name}}
+ */
 function exportResult(reason, promoCode) {
   // Initialise output variable
   let result = {
