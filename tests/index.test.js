@@ -1,4 +1,4 @@
-const askReduction = require("../src/index");
+const { askReduction } = require("../src/askReduction");
 
 describe("promocode validation application", () => {
   it("should return acceptance of a simple promo code", async () => {
@@ -13,7 +13,7 @@ describe("promocode validation application", () => {
       },
     };
     const redeemInfo = {
-      promocode_name: "WeatherCodeAge",
+      promocode_name: "WeatherCodeAgeSimple",
       arguments: {
         age: 15,
       },
@@ -50,7 +50,7 @@ describe("promocode validation application", () => {
           after: "2021-01-01",
           before: "2022-01-01",
         },
-        "@meteo": {
+        "@weather": {
           is: "clear",
           temp: {
             lt: "100", // Celsius here.
@@ -63,7 +63,7 @@ describe("promocode validation application", () => {
       promocode_name: "WeatherCodeAgeComplex",
       arguments: {
         age: 16,
-        meteo: { town: "Lyon" },
+        weather: { town: "Lyon" },
       },
     };
 
@@ -71,8 +71,8 @@ describe("promocode validation application", () => {
 
     expect(received).toEqual({
       avantage: { percent: 20 },
-      promocode_name: "WeatherCodeAgeComplex",
       status: "accepted",
+      promocode_name: "WeatherCodeAgeComplex",
     });
   });
 
@@ -98,10 +98,10 @@ describe("promocode validation application", () => {
 
     expect(received).toEqual({
       promocode_name: "WeatherCodeInvalid",
+      status: "denied",
       reasons: {
         age: "isNotLt",
       },
-      status: "denied",
     });
   });
 });
