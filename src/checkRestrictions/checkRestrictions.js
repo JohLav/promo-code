@@ -1,14 +1,16 @@
+module.exports = { checkRestrictions };
 const { checkAgeRestrictions } = require("./age/checkAgeRestrictions");
 const { checkDateRestrictions } = require("./date/checkDateRestrictions");
 const {
   checkWeatherRestrictions,
 } = require("./weather/checkWeatherRestrictions");
-module.exports = { checkRestrictions };
+const { checkOrRestrictions } = require("./checkOrRestrictions");
 
 /**
  *
  * @param redeemArguments
  * @param restrictions
+ * @param weatherData
  * @returns {{isOK: boolean}|*|{isOK: boolean}}
  */
 function checkRestrictions(redeemArguments, restrictions, weatherData) {
@@ -22,6 +24,13 @@ function checkRestrictions(redeemArguments, restrictions, weatherData) {
     const restrictionType = restrictionsTypeList[index];
 
     switch (restrictionType) {
+      case "@or":
+        reason = checkOrRestrictions(
+          redeemArguments,
+          restrictions,
+          weatherData,
+        );
+        break;
       case "@age":
         reason = checkAgeRestrictions(
           redeemArguments.age,

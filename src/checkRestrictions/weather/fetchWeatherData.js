@@ -1,5 +1,8 @@
-const axios = require("axios");
 module.exports = { fetchWeatherData, extractWeatherInfo };
+const axios = require("axios");
+if (process.env.NODE_ENV !== "production") {
+  require("dotenv").config();
+}
 
 /**
  *

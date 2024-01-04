@@ -1,5 +1,5 @@
-const { createReasonError } = require("../../utils/createReasonError");
 module.exports = { checkNameRestrictions };
+const { createReasonError } = require("../../utils/createReasonError");
 
 /**
  *

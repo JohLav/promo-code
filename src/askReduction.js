@@ -1,12 +1,12 @@
+module.exports = { askReduction };
 const {
   checkNameRestrictions,
 } = require("./checkRestrictions/name/checkNameRestrictions");
-const { exportResult } = require("./utils/exportResult");
-const { checkRestrictions } = require("./checkRestrictions/checkRestrictions");
 const {
   fetchWeatherData,
 } = require("./checkRestrictions/weather/fetchWeatherData");
-module.exports = { askReduction };
+const { checkRestrictions } = require("./checkRestrictions/checkRestrictions");
+const { exportResult } = require("./utils/exportResult");
 
 /**
  *

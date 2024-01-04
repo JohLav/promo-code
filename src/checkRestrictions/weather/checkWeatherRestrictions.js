@@ -1,6 +1,6 @@
+module.exports = { checkWeatherRestrictions };
 const { createReasonError } = require("../../utils/createReasonError");
 const { extractWeatherInfo } = require("./fetchWeatherData");
-module.exports = { checkWeatherRestrictions };
 
 /**
  *

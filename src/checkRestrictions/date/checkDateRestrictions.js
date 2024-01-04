@@ -1,6 +1,6 @@
+module.exports = { checkDateRestrictions };
 const { isAfter, isBefore, isEqual } = require("date-fns");
 const { createReasonError } = require("../../utils/createReasonError");
-module.exports = { checkDateRestrictions };
 
 /**
  *
