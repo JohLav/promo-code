@@ -1,0 +1,20 @@
+{
+  "name": "junior-technical-test",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon src/index",
+    "test": "NODE_OPTIONS=\"$NODE_OPTIONS --experimental-vm-modules\" jest",
+    "test:watch": "NODE_OPTIONS=\"$NODE_OPTIONS --experimental-vm-modules\" jest --watch"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "26.6.3",
+    "nodemon": "2.0.7",
+    "prettier": "^3.4.2",
+    "sinon": "^19.0.2"
+  }
+}
