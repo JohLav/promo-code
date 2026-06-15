@@ -12,12 +12,13 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "jest": "^29.7.0",
+    "jest": "^30.0.0",
     "nodemon": "^3.1.9",
     "prettier": "^3.4.2",
     "sinon": "^22.0.0"
   },
   "overrides": {
-    "js-yaml": "^4.2.0"
+    "js-yaml": "^4.2.0",
+    "babel-plugin-istanbul": "^8.0.2"
   }
 }
